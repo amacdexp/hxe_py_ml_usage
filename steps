@@ -59,6 +59,6 @@ unzip XS_PYTHON00_1-70003433.ZIP -d sap_dependencies
 
 
 ## Prep  python environment variables
-wget https://github.com/alundesap/hxe_python_ml/blob/master/set_python_env.sh
+wget https://raw.githubusercontent.com/amacdonaldsap/hxe_py_ml_usage/master/set_python_env.sh
 chmod +x set_python_env.sh
 
