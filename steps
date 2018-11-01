@@ -1,0 +1,45 @@
+
+##GET GIT and build PYTHON Runtime
+
+##Add repos
+
+sudo zypper addrepo -f http://download.opensuse.org/distribution/leap/42.1/repo/oss/ oss
+sudo zypper addrepo -f http://download.opensuse.org/distribution/leap/42.1/repo/non-oss/ non-oss
+sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.1/ packman
+
+sudo zypper addrepo http://download.opensuse.org/repositories/devel:/tools:/scm/SLE_12_SP3/devel:tools:scm.repo
+sudo zypper addrepo http://download.opensuse.org/repositories/devel:/languages:/tcl/openSUSE_Leap_42.2/devel:languages:tcl.repo
+
+sudo zypper lr
+
+#install GIT
+sudo zypper install git-core   ##some questions to answer
+
+
+#install Python runtime buil dependencies
+sudo zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution --type pattern devel_basis
+sudo zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution tk-devel tcl-devel libffi-devel openssl-devel readline-devel sqlite3-devel ncurses-devel xz-devel zlib-devel nodejs npm lynx jq libzip2 libzip
+
+
+sudo zypper install wget
+
+## Need to get next 2 files manually for now. 
+#wget http://thedrop.sap-a-team.com/files/hana_ml-1.0.3.tar.gz    #officially part of Rev33 HXE CLIENT downloads
+#wget http://thedrop.sap-a-team.com/files/XS_PYTHON00_1-70003433.ZIP #officially SAP SOFTWARE DOWNLOADS
+wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+
+
+### FIXE SSH issues
+sudo zypper remove openssl
+sudo zypper install openssl
+
+sudo /usr/sbin/sshd
+sudo netstat -anlp | grep sshd
+
+
+###  CONTINUE
+tar xzvf Python-3.6.5.tgz
+md python_3_6_5
+cd Python-3.6.5
+./configure --prefix=/usr/sap/HXE/HDB90/hxe_python_ml/python_3_6_5/ --exec-prefix=/usr/sap/HXE/HDB90/hxe_python_ml/python_3_6_5/ ; make -j4 ; make altinstall
+
