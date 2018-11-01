@@ -1,5 +1,5 @@
 # hxe_py_ml_usage
-This repo is inspired by https://github.com/alundesap/hxe_python_ml
+This repo is a partial copy and testing version of https://github.com/alundesap/hxe_python_ml
 
 It is for using HANA ML PYTHON API - Released intially with Hana Express 2 SPS03 REV 33
 
